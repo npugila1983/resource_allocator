@@ -14,5 +14,10 @@
             "name": "Pugal",
             "email": "npugila1983@gmail.com"
         }
-    ]
+    ],
+	"autoload":{
+		"psr-4" : {
+			"Core\\" : "src/"
+		}
+	}
 }
