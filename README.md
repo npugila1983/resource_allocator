@@ -20,12 +20,14 @@ Execute following command to run unit tests
 ./vendor/bin/phpunit
 ```
 
-##Run
+## Run
 ```shell
+### Using Shell
 php index.php 1 1150
 ```
 
 ```browser
+### Using Browser
 locate index.php
 @params hours=1&capacity=1150
 
