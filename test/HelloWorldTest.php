@@ -2,11 +2,13 @@
 
 use PHPUnit\Framework\TestCase;
 
-class HelloWorldTest extends TestCase{
+class HelloWorldTest extends TestCase
+{
 
-    public function testWorldExits(){
+    public function testWorldExits()
+    {
         $this->assertTrue(true);
-		
-		echo "\n\nHelloWorldTest \n\n";
+
+        echo "\n\nHelloWorldTest \n\n";
     }
 }
