@@ -2,6 +2,7 @@
 Project to allocate resource with minimal cost
 
 ## Technical stack
+* Git
 * PHP 7.1 or greater
 * Composer
 
@@ -22,12 +23,12 @@ Execute following command to run unit tests
 
 ## Run
 ```shell
-### Using Shell
+// Using CLI
 php index.php 1 1150
 ```
 
 ```browser
-### Using Browser
+// Using Browser
 locate index.php
 @params hours=1&capacity=1150
 
