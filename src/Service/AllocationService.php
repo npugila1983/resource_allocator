@@ -4,6 +4,7 @@ namespace Core\Service;
 
 use \Core\Dao\AllocationDao;
 use \Core\Model\Allocation;
+use \Core\Util\Exception\InvalidRequestException;
 
 class AllocationService{
 
@@ -16,8 +17,12 @@ class AllocationService{
 		$this->dao = $dao;
 	}
 	
-	public function allocate(int $hours, int $capacity){
+	public function allocate($hours, $capacity){
 		
+		$error = $this->validateInput($hours, $capacity);
+		if($error){
+			return $error;
+		}
 		$countries = $this->dao->getCountries();
 		$sizes = $this->dao->getSizes();
 		$machineCapacity = $this->dao->getCapacity();
@@ -90,5 +95,19 @@ class AllocationService{
 		}
 		asort($unitCost);
 		return $unitCost;
+	}
+	
+	private function validateInput($hours, $capacity){
+		$error = array();
+		try{
+			if(!$hours || !$capacity){
+				throw new InvalidRequestException('Invalid inpur for hours & capacity. Both should be positive number');
+			}
+		}catch(InvalidRequestException $e){
+			$error = array(
+						'error_message' => $e->getMessage()
+					);
+		}
+		return $error;
 	}
 }

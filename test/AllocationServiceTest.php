@@ -51,7 +51,7 @@ class AllocationServiceTest extends TestCase{
 		
 		$actual = $this->service->allocate($hours, $capacity);
 		
-		echo print_r($actual);
+		echo json_encode(array('Output' => $actual)) . "\n\n";
 		
 		$this->assertEquals($expectedResult, $actual);
 		
@@ -97,7 +97,7 @@ class AllocationServiceTest extends TestCase{
 				]
 			],
 			
-			//Test for null input
+			//Test for empty or null input
 			[
 				null, 
 				null,
@@ -109,11 +109,7 @@ class AllocationServiceTest extends TestCase{
 					'India' => ['Large' => 140, '2XLarge' => 413, '4XLarge' => 890, '8XLarge' => 1300, '10XLarge' => 2970],
 					'China' => ['Large' => 110, 'XLarge' => 200, '4XLarge' => 670, '8XLarge' => 1180]
 				],
-				[
-					new Allocation('Newyork', '$9854', ['(8XLarge, 6)', '(4XLarge, 1)', '(2XLarge, 1)', '(XLarge, 1)']),
-					new Allocation('India', '$9319', ['(8XLarge, 6)', '(2XLarge, 3)', '(Large, 2)']),
-					new Allocation('China', '$8350', ['(8XLarge, 6)', '(4XLarge, 1)', '(XLarge, 3)']),
-				]
+				[ 'error_message' => 'Invalid inpur for hours & capacity. Both should be positive number']
 			]
 		];
 	}
